@@ -1,9 +1,10 @@
 package com.springguild.gateway.controller;
 
-import com.springguild.gateway.controller.response.*;
+import com.springguild.gateway.client.response.*;
+import com.springguild.gateway.service.*;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.*;
 
 import java.util.*;
 
@@ -14,27 +15,12 @@ import java.util.*;
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class GatewayController {
 
-	private RestTemplate restTemplate = new RestTemplate();
+	@Autowired
+	private GatewayService gatewayService;
 
 	@RequestMapping("/getSuggestedRecipes")
 	public List<RecipeResponse> getSuggestedRecipes(@RequestParam("userId") long userId) {
-
-		List<RecipeResponse> suggestedRecipes = new ArrayList<RecipeResponse>();
-
-		// Get the user's info from the users service
-		UserResponse userResponse = restTemplate.getForObject("http://localhost:8981/user/{userId}", UserResponse.class, userId);
-
-		// Get all recipes from the recipe service
-		RecipeResponse[] recipeResponses = restTemplate.getForObject("http://localhost:8982/recipe/", RecipeResponse[].class);
-
-		// Build list of suggested recipes based on user's pie preference
-		for(RecipeResponse recipeResponse : recipeResponses) {
-			if(userResponse.isLikesPie() == recipeResponse.isPie()) {
-				suggestedRecipes.add(recipeResponse);
-			}
-		}
-
-		return suggestedRecipes;
+		return gatewayService.getSuggestedRecipes(userId);
 	}
 
 }

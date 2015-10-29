@@ -1,4 +1,4 @@
-package com.springguild.gateway.controller.response;
+package com.springguild.gateway.client.response;
 
 import com.fasterxml.jackson.annotation.*;
 
