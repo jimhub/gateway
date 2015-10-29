@@ -11,6 +11,7 @@ public class RecipeResponse {
 	private long id;
 	private String name;
 	private boolean pie;
+	private int applicationPort;
 
 	public long getId() {
 		return id;
@@ -34,5 +35,13 @@ public class RecipeResponse {
 
 	public void setPie(boolean pie) {
 		this.pie = pie;
+	}
+
+	public int getApplicationPort() {
+		return applicationPort;
+	}
+
+	public void setApplicationPort(int applicationPort) {
+		this.applicationPort = applicationPort;
 	}
 }
