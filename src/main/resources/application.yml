@@ -10,6 +10,11 @@ eureka:
     instanceId: ${spring.application.name}:${server.port}
     hostname: localhost
 
+zuul:
+  routes:
+    users: /api/users/**
+    recipes: /api/recipes/**
+
 server:
   port: 8989
 
