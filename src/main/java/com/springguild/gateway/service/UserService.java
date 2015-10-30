@@ -1,5 +1,6 @@
 package com.springguild.gateway.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.*;
 import com.netflix.hystrix.contrib.javanica.command.*;
 import com.springguild.gateway.client.*;
 import com.springguild.gateway.client.response.*;
@@ -26,7 +27,17 @@ public class UserService {
 //		};
 //	}
 
+	@HystrixCommand(fallbackMethod = "getFallbackUser")
 	public UserResponse getUser(long id) {
 		return userClient.getUser(id);
+	}
+
+	public UserResponse getFallbackUser(long id) {
+		UserResponse userResponse = new UserResponse();
+		userResponse.setId(id);
+		userResponse.setLikesPie(true);
+		userResponse.setName("OH NO");
+
+		return userResponse;
 	}
 }
