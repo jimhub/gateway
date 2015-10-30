@@ -27,7 +27,7 @@ public class UserService {
 //		};
 //	}
 
-	@HystrixCommand(fallbackMethod = "getFallbackUser")
+	//@HystrixCommand(fallbackMethod = "getFallbackUser")
 	public UserResponse getUser(long id) {
 		return userClient.getUser(id);
 	}
