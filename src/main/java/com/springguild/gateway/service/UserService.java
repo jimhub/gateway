@@ -17,16 +17,16 @@ public class UserService {
 	@Autowired
 	private UserClient userClient;
 
-// @HystrixCommand(fallbackMethod = "getFallbackUser")
-// public Observable<UserResponse> getUser(final long id) {
-//		return new ObservableResult<UserResponse>() {
-//
-//			@Override
-//			public UserResponse invoke() {
-//				return userClient.getUser(id);
-//			}
-//		};
-//	}
+ 	//@HystrixCommand(fallbackMethod = "getFallbackUser")
+ 	public Observable<UserResponse> getUserObservable(final long id) {
+		return new ObservableResult<UserResponse>() {
+
+			@Override
+			public UserResponse invoke() {
+				return userClient.getUser(id);
+			}
+		};
+	}
 
 	//@HystrixCommand(fallbackMethod = "getFallbackUser")
 	public UserResponse getUser(long id) {

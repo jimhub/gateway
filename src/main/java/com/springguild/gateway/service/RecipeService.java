@@ -18,15 +18,15 @@ public class RecipeService {
 	@Autowired
 	private RecipeClient recipeClient;
 
-//	public Observable<List<RecipeResponse>> getAllRecipes() {
-//		return new ObservableResult<List<RecipeResponse>>() {
-//
-//			@Override
-//			public List<RecipeResponse> invoke() {
-//				return recipeClient.getAllRecipes();
-//			}
-//		};
-//	}
+	public Observable<List<RecipeResponse>> getAllRecipesObservable() {
+		return new ObservableResult<List<RecipeResponse>>() {
+
+			@Override
+			public List<RecipeResponse> invoke() {
+				return recipeClient.getAllRecipes();
+			}
+		};
+	}
 
 	public List<RecipeResponse> getAllRecipes() {
 		return recipeClient.getAllRecipes();

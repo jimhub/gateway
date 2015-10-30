@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.*;
+import rx.Observable;
 
 import java.util.*;
 
@@ -40,6 +41,25 @@ public class GatewayService {
 				suggestedRecipes.add(recipeResponse);
 			}
 		}
+//
+//		Observable<List<RecipeResponse>> suggestedRecipes = Observable.zip(
+//			userService.getUserObservable(userId),
+//			recipeService.getAllRecipesObservable(),
+//
+//			(userResponse, recipeResponses) -> {
+//
+//				List<RecipeResponse> recipes = new ArrayList<RecipeResponse>();
+//
+//				// Build list of suggested recipes based on user's pie preference
+//				for (RecipeResponse recipeResponse : recipeResponses) {
+//					if (userResponse.isLikesPie() == recipeResponse.isPie()) {
+//						recipes.add(recipeResponse);
+//					}
+//				}
+//
+//				return recipes;
+//			}
+//		);
 
 		return suggestedRecipes;
 	}
