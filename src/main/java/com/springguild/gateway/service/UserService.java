@@ -17,7 +17,8 @@ public class UserService {
 	@Autowired
 	private UserClient userClient;
 
-//	public Observable<UserResponse> getUser(final long id) {
+// @HystrixCommand(fallbackMethod = "getFallbackUser")
+// public Observable<UserResponse> getUser(final long id) {
 //		return new ObservableResult<UserResponse>() {
 //
 //			@Override
