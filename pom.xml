@@ -15,7 +15,7 @@
 	</parent>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>1.7</java.version>
 		<docker.image.prefix>springguild</docker.image.prefix>
 	</properties>
 
@@ -51,10 +51,6 @@
 			<artifactId>spring-cloud-starter-zuul</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>io.reactivex</groupId>
-			<artifactId>rxjava</artifactId>
-		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
