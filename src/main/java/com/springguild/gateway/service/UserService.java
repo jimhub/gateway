@@ -15,8 +15,16 @@ public class UserService {
 	@Autowired
 	private UserClient userClient;
 
- 	//@HystrixCommand(fallbackMethod = "getFallbackUser")
+// 	@HystrixCommand(fallbackMethod = "getFallbackUser",
+////			commandProperties = {
+////					@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
+////			}
+//	)
 	public UserResponse getUser(long id) {
+//		try {
+//			Thread.sleep(600);
+//		} catch(InterruptedException ex) {}
+
 		return userClient.getUser(id);
 	}
 
